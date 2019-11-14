@@ -6,8 +6,8 @@ ENV VAMSHOP_VERSION 0.34.0
 
 # install requirements and NGINX
 RUN echo "deb http://nginx.org/packages/debian/ ${NGINX_CODENAME} nginx" >> /etc/apt/sources.list \
-	&& wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb \ 
-	&& dpkg -i libssl1.0.0_1.0.1t-1+deb8u6_amd64.deb \
+	&& wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb \ 
+	&& dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb \
 	&& wget http://nginx.org/packages/keys/nginx_signing.key \
 	&& cat nginx_signing.key | apt-key add - \
 	&& apt-get update && apt-get install --no-install-recommends --no-install-suggests -y --force-yes \
