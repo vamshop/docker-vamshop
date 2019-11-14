@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    image: cezerin/cezerin
+    image: vamshop/vamshop
     environment:
       - DB_HOST=db
       - DB_PORT=27017
@@ -12,7 +12,7 @@ services:
     ports:
       - 4000:80
     volumes:
-      - /var/www/cezerin-on-host:/var/www/cezerin
+      - /var/www/vamshop-on-host:/var/www/vamshop
     depends_on:
       - db
     restart: always

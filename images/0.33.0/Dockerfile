@@ -1,8 +1,8 @@
 FROM node:8
-MAINTAINER Restmount <jsonmount@gmail.com>
+MAINTAINER VamShop <vamshop@gmail.com>
 
 ENV NGINX_CODENAME jessie
-ENV CEZERIN_VERSION 0.33.0
+ENV VAMSHOP_VERSION 0.33.0
 
 # install requirements and NGINX
 RUN echo "deb http://nginx.org/packages/debian/ ${NGINX_CODENAME} nginx" >> /etc/apt/sources.list \
@@ -23,16 +23,16 @@ RUN npm install pm2 -g
 # download project
 RUN mkdir -p /var/www \
     && cd /var/www \
-    && wget -O cezerin.zip https://github.com/cezerin/cezerin/archive/v$CEZERIN_VERSION.zip \
-    && unzip cezerin.zip \
-    && rm cezerin.zip \
-    && mv cezerin-$CEZERIN_VERSION cezerin
+    && wget -O vamshop.zip https://github.com/vamshop/vamshop/archive/v$VAMSHOP_VERSION.zip \
+    && unzip vamshop.zip \
+    && rm vamshop.zip \
+    && mv vamshop-$VAMSHOP_VERSION vamshop
 
 # overwrite config
-COPY config/* /var/www/cezerin/config/
+COPY config/* /var/www/vamshop/config/
 
 # overwrite PM2 process file
-COPY process.json /var/www/cezerin/
+COPY process.json /var/www/vamshop/
 
 # Nginx config
 COPY nginx/nginx.conf /etc/nginx/
@@ -42,11 +42,11 @@ COPY nginx/default.conf /etc/nginx/conf.d/
 COPY docker-entrypoint.sh /usr/local/bin/
 
 # build project
-RUN cd /var/www/cezerin \
+RUN cd /var/www/vamshop \
     && npm install \
     && npm run build
 
-WORKDIR /var/www/cezerin
+WORKDIR /var/www/vamshop
 
 EXPOSE 80
 
