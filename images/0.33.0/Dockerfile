@@ -6,7 +6,7 @@ ENV VAMSHOP_VERSION 0.33.0
 
 # install requirements and NGINX
 RUN echo "deb http://nginx.org/packages/debian/ ${NGINX_CODENAME} nginx" >> /etc/apt/sources.list \
-	&& wget http://nginx.org/packages/keys/nginx_signing.key && cat nginx_signing.key | sudo apt-key add - 
+	&& wget http://nginx.org/packages/keys/nginx_signing.key && cat nginx_signing.key && sudo apt-key add - 
 && apt-get update && apt-get install --no-install-recommends --no-install-suggests -y --force-yes \
 		bash \
 		zip \
